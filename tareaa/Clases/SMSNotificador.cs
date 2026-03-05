@@ -9,10 +9,14 @@ namespace tareaa.Clases
 {
     public class SMSNotificador: INotificable
     {
+        /// <summary>
+        /// Gutierrez Ruiz Evelyn Pamela
+        /// se creo una clase smsnotificador que implementa la interfaz INotificable para enviar notificaciones por SMS. La clase tiene una propiedad numero para almacenar el número de teléfono del destinatario, y los métodos enviarmensaje y enviarconfirmacion para enviar mensajes y confirmaciones
+        /// </summary>
 
-        public string NumeroTelefono { get; set; }
+        public int NumeroTelefono { get; set; }
 
-        public SMSNotificador(string numeroTelefono)
+        public SMSNotificador(int numeroTelefono)
         {
             this.NumeroTelefono = numeroTelefono;
         }

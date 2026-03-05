@@ -7,6 +7,10 @@ using tareaa.Interfaz;
 
 namespace tareaa.Clases
 {
+    /// <summary>
+    /// Gutierrez Ruiz Evelyn Pamela
+    /// se creo una clase emailnotificador que implementa la interfaz INotificable para enviar notificaciones por email. La clase tiene una propiedad email para almacenar la dirección de correo electrónico del destinatario, y los métodos enviarmensaje y enviarconfirmacion para enviar mensajes y confirmaciones
+    /// </summary>
     public class EmailNotificador: INotificable
     {
         public string DireccionEmail { get; set; }

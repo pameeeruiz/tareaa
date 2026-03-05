@@ -11,23 +11,28 @@ namespace tareaa
 {
     internal class Program
     {
+        /// <summary>
+        /// Gutierrez Ruiz Evelyn Pamela
+        /// se creo un programa que permite enviar notificaciones por email o sms utilizando una interfaz INotificable.
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
-            bool salir = false;
-            while (!salir)
+
+            string opc;
+            do
             {
                 Console.WriteLine("-----------MENU-----------");
                 Console.WriteLine("1.Enviar notificación mail");
                 Console.WriteLine("2.EnViar notificación sms");
                 Console.WriteLine("3.Salir");
                 Console.WriteLine("Selecciona la opcion: ");
-
-                int opc= int.Parse(Console.ReadLine());
+                 opc = Console.ReadLine();
 
                 switch (opc)
                 {
 
-                    case 1:
+                    case "1":
                         Console.Write("Ingrese la dirección de email: ");
                         string direcemail = Console.ReadLine();
 
@@ -41,26 +46,41 @@ namespace tareaa
                         Console.WriteLine("Operación completada.");
                         break;
 
-                    case 2:
-                        Console.WriteLine("Ingrese el número de teléfono: ");
-                        int numerotel = int.Parse(Console.ReadLine());
+                    case "2":
+                        try
+                        {
+                            Console.WriteLine("Ingrese el número de teléfono: ");
+                            int numerotel = int.Parse(Console.ReadLine());
 
-                        Console.Write("Ingrese el mensaje a enviar: ");
-                        string mensajeEail = Console.ReadLine();
+                            Console.Write("Ingrese el mensaje a enviar: ");
+                            string mensajeEail = Console.ReadLine();
 
-                        INotificable sms = new SMSNotificador();
-                        sms.EnviarMensaje(mensajeEail);
-                        sms.EnviarConfirmacion();
+                            INotificable sms = new SMSNotificador(numerotel);
+                            sms.EnviarMensaje(mensajeEail);
+                            sms.EnviarConfirmacion();
 
-                        Console.WriteLine("Operación completada. Presione una tecla para continuar...");
-                        Console.ReadKey();
-
-
+                            Console.WriteLine("Operación completada. ");
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                         
+                        }
+                        
 
                         break;
+
+                    case "3":
+                        Console.WriteLine("Gracias por usar el sistema. ");
+                        break;
+
+                    default:
+                        Console.WriteLine("Opción inválida. Intente nuevamente.");
+                        break;
+
                 }
 
-            }
+            } while (opc != "3");
         }
     }
 }
